@@ -26,6 +26,9 @@ query projectIssuesAndFields($owner: String!, $project_number: Int!, $cursor: St
                 repository {
                   id
                   name
+                  owner {
+                    login
+                  }
                 }
               }
             }
