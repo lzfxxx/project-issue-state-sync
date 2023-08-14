@@ -63,7 +63,6 @@ async fn main() -> Result<()> {
 async fn ensure_issue_state(
     item: &Item,
     issue_state: IssueState,
-    args: &Args,
     client: &Octocrab,
     option_ids: &Vec<String>,
 ) -> Result<()> {
@@ -194,13 +193,12 @@ async fn process_issue_batch(
         ensure_issue_state(
             &item,
             IssueState::Closed,
-            &args,
             &client,
             &closed_option_ids,
         )
         .await?;
 
-        ensure_issue_state(&item, IssueState::Open, &args, &client, &open_option_ids).await?;
+        ensure_issue_state(&item, IssueState::Open, &client, &open_option_ids).await?;
     }
 
     Ok(project.page_info)
