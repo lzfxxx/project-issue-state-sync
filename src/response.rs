@@ -40,9 +40,15 @@ pub struct Issue {
 }
 
 #[derive(Deserialize, Debug)]
+pub struct Author {
+    pub login: String,
+}
+
+#[derive(Deserialize, Debug)]
 pub struct Repository {
     pub id: String,
     pub name: String,
+    pub owner: Author,
 }
 
 #[derive(Deserialize, Debug)]
